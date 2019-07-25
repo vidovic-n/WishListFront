@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title color="light">Add New Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+ 
+  <ion-card>
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)">
+  <ion-item>
+    <ion-label position="fixed">Title:</ion-label>
+    <ion-input type="text" id="title" formControlName="title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="fixed">Description:</ion-label>
+      <ion-input type="text" id="description" formControlName="description"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="fixed">Image URL:</ion-label>
+      <ion-input type="text" id="imageUrl" formControlName="imageUrl"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label position="fixed">Price[$]:</ion-label>
+      <ion-input type="text" id="price" formControlName="price"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    
+  <ion-item slot="start">
+      <ion-label>Category:</ion-label>
+      <ion-select value="" okText="Okay" cancelText="Dismiss" type="text" id="category" formControlName="category">
+        <ion-select-option value="technology">Technology</ion-select-option>
+        <ion-select-option value="food">Food</ion-select-option>
+        <ion-select-option value="clothes">Clothes</ion-select-option>
+        <ion-select-option value="cosmetics">Cosmetics</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+    </ion-list>
+
+  <ion-button expand="full" type="submit">
+    Add Item
+    <ion-icon slot="end" color="success" name="checkmark-circle-outline"></ion-icon>
+  </ion-button>
+    </form>
+  </ion-card>
+</ion-content>
