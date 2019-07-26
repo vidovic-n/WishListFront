@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ItemService } from 'src/app/shared/item.service';
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ export class AddFormPage implements OnInit {
 
   addForm: FormGroup;
 
-  constructor(private serviceItem: ItemService) { }
+  constructor(private serviceItem: ItemService, private router: Router) {
+  }
 
     ngOnInit() {
       this.addForm = new FormGroup({
@@ -25,17 +27,24 @@ export class AddFormPage implements OnInit {
    });
     }
 
+
+    // ionViewWillEnter() {
+      // this.serviceItem.refreshList();
+      // this.ngOnInit();
+    // }
+
+
     onSubmit(form: FormGroup) {
       console.log(this.addForm);
       this.serviceItem.postItem(form.value).subscribe(
         res => {
-          console.log( 'Res' + res);
+          this.serviceItem.refreshList();
+          this.router.navigate(['/tabs/tab1']);
         },
         err => {
           console.log(err);
         }
       );
-
     }
 
 }

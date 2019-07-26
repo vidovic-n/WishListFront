@@ -30,9 +30,9 @@
   <ion-list>
    
       <ion-item-sliding *ngFor="let item of itemService.itemList">
-        <ion-item >
+        <ion-item>
             <ion-avatar slot="start">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx_3AGquwBVJgzVzFtUr5UIvB6MRK2RL7oRj95jI4cNOApvPCpPw">
+                <img [src]='item.imageUrl'>
               </ion-avatar>
           <ion-label >
             <h2>{{ item.title }}</h2>
@@ -41,7 +41,7 @@
              </ion-text> 
              <p>{{ item.category }}</p>
           </ion-label>
-          <ion-item-option slot="end" color="danger" >
+          <ion-item-option slot="end" color="danger" (click)="onDelete(item.id)" >
             <ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-item-option>
         </ion-item>
