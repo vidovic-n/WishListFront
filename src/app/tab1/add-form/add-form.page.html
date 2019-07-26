@@ -10,23 +10,31 @@
       <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)">
   <ion-item>
     <ion-label position="fixed">Title:</ion-label>
-    <ion-input type="text" id="title" formControlName="title"></ion-input>
+    <ion-input type="text" id="title" formControlName="title"></ion-input><br>
   </ion-item>
+  <ion-note *ngIf="!addForm.get('title').valid && addForm.get('title').touched" color="danger">
+      Please enter a valid title!</ion-note>
 
   <ion-item>
       <ion-label position="fixed">Description:</ion-label>
       <ion-input type="text" id="description" formControlName="description"></ion-input>
   </ion-item>
+  <ion-note *ngIf="!addForm.get('description').valid && addForm.get('description').touched" color="danger">
+      Please enter a valid description!</ion-note>
 
   <ion-item>
       <ion-label position="fixed">Image URL:</ion-label>
       <ion-input type="text" id="imageUrl" formControlName="imageUrl"></ion-input>
   </ion-item>
+  <ion-note *ngIf="!addForm.get('imageUrl').valid && addForm.get('imageUrl').touched" color="danger">
+      Please enter a valid image Url!</ion-note>
 
   <ion-item>
       <ion-label position="fixed">Price[$]:</ion-label>
       <ion-input type="text" id="price" formControlName="price"></ion-input>
   </ion-item>
+  <ion-note *ngIf="!addForm.get('price').valid && addForm.get('price').touched" color="danger">
+      Please enter a valid price!</ion-note>
 
   <ion-list>
     
@@ -40,12 +48,18 @@
         <ion-select-option value="other">Other</ion-select-option>
       </ion-select>
     </ion-item>
+    <ion-note *ngIf="!addForm.get('category').valid && addForm.get('category').touched" color="danger">
+        Please choose category!</ion-note>
     </ion-list>
 
-  <ion-button expand="full" type="submit">
+
+    
+  <ion-button expand="full" type="submit" [disabled]="!addForm.valid">
     Add Item
     <ion-icon slot="end" color="success" name="checkmark-circle-outline"></ion-icon>
   </ion-button>
+  <ion-note *ngIf="!addForm.valid && addForm.touched" color="danger">
+      Please enter valid data!</ion-note>
     </form>
   </ion-card>
 </ion-content>

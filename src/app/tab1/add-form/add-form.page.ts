@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ItemService } from 'src/app/shared/item.service';
+
 
 
 @Component({
@@ -16,11 +17,11 @@ export class AddFormPage implements OnInit {
 
     ngOnInit() {
       this.addForm = new FormGroup({
-        title: new FormControl(null),
-        description: new FormControl(null),
-        imageUrl: new FormControl(null),
-        price: new FormControl(null),
-        category: new FormControl(null)
+        title: new FormControl(null, Validators.required),
+        description: new FormControl(null, Validators.required),
+        imageUrl: new FormControl(null, Validators.required),
+        price: new FormControl(null, [Validators.required, Validators.pattern(/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/)]),
+        category: new FormControl(null, Validators.required)
    });
     }
 
@@ -28,12 +29,12 @@ export class AddFormPage implements OnInit {
       console.log(this.addForm);
       this.serviceItem.postItem(form.value).subscribe(
         res => {
-          console.log(res);
+          console.log( 'Res' + res);
         },
         err => {
           console.log(err);
         }
-      )
+      );
 
     }
 
