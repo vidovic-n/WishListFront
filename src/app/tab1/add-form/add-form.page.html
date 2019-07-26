@@ -10,7 +10,7 @@
       <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)">
   <ion-item>
     <ion-label position="fixed">Title:</ion-label>
-    <ion-input type="text" id="title" formControlName="title"></ion-input><br>
+    <ion-input type="text" id="title" formControlName="title"></ion-input>
   </ion-item>
   <ion-note *ngIf="!addForm.get('title').valid && addForm.get('title').touched" color="danger">
       Please enter a valid title!</ion-note>
@@ -49,7 +49,7 @@
       </ion-select>
     </ion-item>
     <ion-note *ngIf="!addForm.get('category').valid && addForm.get('category').touched" color="danger">
-        Please choose category!</ion-note>
+        Please choose one category!</ion-note>
     </ion-list>
 
 

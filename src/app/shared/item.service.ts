@@ -9,10 +9,17 @@ export class ItemService {
 
   formData: Item;
   readonly rootURL = 'http://localhost:55353/api';
+  itemList: Item[];
 
   constructor(private httpClient: HttpClient) { }
 
   postItem(formData: Item) {
    return this.httpClient.post(this.rootURL + '/Item', formData );
+  }
+
+  refreshList() {
+    this.httpClient.get(this.rootURL + '/Item')
+    .toPromise()
+    .then(res => this.itemList = res as Item[]);
   }
 }

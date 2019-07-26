@@ -27,19 +27,19 @@
   </ion-toolbar> 
 
 
-  <ion-list #myList>
+  <ion-list>
    
-      <ion-item-sliding >
+      <ion-item-sliding *ngFor="let item of itemService.itemList">
         <ion-item >
             <ion-avatar slot="start">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx_3AGquwBVJgzVzFtUr5UIvB6MRK2RL7oRj95jI4cNOApvPCpPw">
               </ion-avatar>
           <ion-label >
-            <h2>Nalov</h2>
+            <h2>{{ item.title }}</h2>
             <ion-text color="secondary">
-              <p>Opis</p>
+              <p>{{ item.description }}</p>
              </ion-text> 
-             <p>kategorija</p>
+             <p>{{ item.category }}</p>
           </ion-label>
           <ion-item-option slot="end" color="danger" >
             <ion-icon slot="icon-only" name="trash"></ion-icon>
